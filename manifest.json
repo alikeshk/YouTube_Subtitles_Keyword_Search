@@ -1,6 +1,8 @@
 {
+  "name": "YouTube Keyword Subtitle Search",
   "version": "0.1.0",
   "permissions": ["tabs"],
+  "host_permissions": ["https://*.youtube.com/*"],
   "manifest_version": 3,
   "default_popup": "index.html",
   "background": {

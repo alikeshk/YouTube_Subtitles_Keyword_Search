@@ -6,7 +6,7 @@ chrome.tabs.onUpdated.addListener((tabId, tab) => {
 
         chrome.tabs.sendMessage(tabId, {
         type: "NEW",
-        videoId: urlParameters.get("search_query"),
+        videoId: searchWords.get("search_query"),
         });
     }
 });

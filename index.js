@@ -16,7 +16,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  function makeTable() {
-    var table = document.getElementById('keyWord_table');
-    var mainElements = [];
+  function makeLists(array1, array2, outputElementId1, outputElementId2) {
+
+    var outputElement1 = document.getElementById(outputElementId1);
+    var outputElement2 = document.getElementById(outputElementId2);
+
+    var list1 = document.createElement('ul');
+    var list2 = document.createElement('ul');
+
+    for (var i = 0; i < array1.length; i++) {
+      var li = document.createElement('li');
+      li.textContent = array1[i];
+      list1.appendChild(li);
+    }
+
+    for (var i = 0; i < array2.length; i++) {
+      var li = document.createElement('li');
+      li.textContent = array2[i];
+      list2.appendChild(li);
+    }
+
+    outputElement1.appendChild(ul1);
+    outputElement2.appendChild(ul2);
   }

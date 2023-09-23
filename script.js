@@ -1,7 +1,17 @@
 var CONFIG = require('./config.json');
+let currentSearch = "";
+
+chrome.runtime.onMessage.addListener((obj, sender, response) => {
+    const { type, searchId } = obj;
+
+    if (type === "NEW") {
+      currentSearch = searchId;
+      newSearchLoaded();
+    }
+});
 
 async function getYouTubeSubtitles(url) {
-  const url = `https://youtube-subtitles-captions-downloader.p.rapidapi.com/ytmp3/ytmp3/subtitles/?url=${url}`;
+  url = `https://youtube-subtitles-captions-downloader.p.rapidapi.com/ytmp3/ytmp3/subtitles/?url=${url}`;
   const options = {
     method: 'GET',
     headers: {

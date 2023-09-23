@@ -1,4 +1,4 @@
-import { getActiveTabURL } from "./utils.js";
+import { getActiveTabURL } from "./utilities.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     const activeTab = await getActiveTabURL();

@@ -16,7 +16,7 @@
         document.addEventListener("mouseover", function(event) {
           if (event.target.tagName !== "A" || !event.target.href.startsWith("https://www.youtube.com/watch?v=")) {return;}
           console.log(event.target.href);
-          fetchYoutubeSubtitleData(event.target.href)
+          getYouTubeSubtitles(event.target.href)
             .then(result => {
                 // Use JSON.stringify() to convert the object to a JSON-formatted string
                 const captions = JSON.stringify(result);
@@ -52,23 +52,24 @@
     };
     
     async function getYouTubeSubtitles(url) {
-      url = `https://youtube-subtitles-captions-downloader.p.rapidapi.com/ytmp3/ytmp3/subtitles/?url=${url}`;
-      const options = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Key': CONFIG.api_key,
-          'X-RapidAPI-Host': 'youtube-subtitles-captions-downloader.p.rapidapi.com'
+        let result;
+        url = `https://youtube-subtitles-captions-downloader.p.rapidapi.com/ytmp3/ytmp3/subtitles/?url=${url}`;
+        const options = {
+            method: 'GET',
+            headers: {
+            'X-RapidAPI-Key': "apiKey",
+            'X-RapidAPI-Host': 'youtube-subtitles-captions-downloader.p.rapidapi.com'
+            }
+        };
+        
+        try {
+            const response = await fetch(url, options);
+            result = await response.text();
+            //console.log(result);
+        } catch (error) {
+            console.error(error);
         }
-      };
-    
-      try {
-        const response = await fetch(url, options);
-        const result = await response.text();
-        console.log(result);
-      } catch (error) {
-        console.error(error);
-      }
-    
-      return result;
+        
+        return result;
     }
 })();

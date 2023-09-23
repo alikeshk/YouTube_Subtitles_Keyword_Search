@@ -1,7 +1,8 @@
 html
 {   
-    width: 1000px;
-    height: 100px;
-    background-color: gray;
-    font-family: 'Roboto', sans-serif;
-}
+    width: 150px;
+    height: 75px;
+    background-color: rgb(40, 40, 40);
+    color: white;
+    font-size: 20px;
+}  

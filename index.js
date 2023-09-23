@@ -1,4 +1,4 @@
-import { getActiveTabURL } from "./utilities.js";
+import { getActiveTabURL } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     const activeTab = await getActiveTabURL();
@@ -15,3 +15,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       container.innerHTML = '<div class="title">This is not a youtube search page.</div>';
     }
   });
+
+  function makeTable() {
+    var table = document.getElementById('keyWord_table');
+    var mainElements = [];
+  }

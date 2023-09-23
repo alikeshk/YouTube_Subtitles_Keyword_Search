@@ -13,8 +13,9 @@ chrome.runtime.onMessage.addListener((obj, sender, response) => {
 const newSearchLoaded = async () => {
   if (typeof document !== undefined) {
     document.addEventListener("mouseover", function(event) {
-      if (event.target.tagName !== "A") {return;}
-      console.log("hello");
+      if (event.target.tagName !== "A" || !event.target.href.startsWith("https://www.youtube.com/watch?v=")) {return;}
+      console.log(event.target.href);
+      getYouTubeSubtitles(event.target.href);
     });
   }
 }

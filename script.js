@@ -1,11 +1,11 @@
-var CONFIG = require('./config.json');
 let currentSearch = "";
 
 chrome.runtime.onMessage.addListener((obj, sender, response) => {
-    const { type, searchId } = obj;
+    const { type, value, searchId } = obj;
 
     if (type === "NEW") {
       currentSearch = searchId;
+      console.log(currentSearch);
       newSearchLoaded();
     }
 });

@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0",
+  "permissions": ["storage, tabs"],
+  "manifest_version": 3,
+  "default_popup": "index.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scritps": {
+    "js": "script.js"
+  }
+}
+

@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "permissions": ["storage, tabs"],
+  "permissions": ["tabs"],
   "manifest_version": 3,
   "default_popup": "index.html",
   "background": {

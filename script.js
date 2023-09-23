@@ -1,7 +1,7 @@
 var CONFIG = require('./config.json');
 
-async function getYouTubeSubtitles() {
-  const url = 'https://youtube-subtitles-captions-downloader.p.rapidapi.com/ytmp3/ytmp3/subtitles/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D-PiaN8nxark';
+async function getYouTubeSubtitles(url) {
+  const url = `https://youtube-subtitles-captions-downloader.p.rapidapi.com/ytmp3/ytmp3/subtitles/?url=${url}`;
   const options = {
     method: 'GET',
     headers: {

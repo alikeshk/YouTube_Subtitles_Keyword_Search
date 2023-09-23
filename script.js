@@ -10,6 +10,15 @@ chrome.runtime.onMessage.addListener((obj, sender, response) => {
     }
 });
 
+const newSearchLoaded = async () => {
+  if (typeof document !== undefined) {
+    document.addEventListener("mouseover", function(event) {
+      if (event.target.tagName !== "A") {return;}
+      console.log("hello");
+    });
+  }
+}
+
 async function getYouTubeSubtitles(url) {
   url = `https://youtube-subtitles-captions-downloader.p.rapidapi.com/ytmp3/ytmp3/subtitles/?url=${url}`;
   const options = {

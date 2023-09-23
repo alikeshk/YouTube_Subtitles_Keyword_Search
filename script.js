@@ -72,4 +72,11 @@
         
         return result;
     }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        if (currentSearch === "") {
+            const container = document.getElementsByClassName("container")[0];
+            container.innerHTML = '<div class="title">Test Script.js.</div>';
+        }
+    });
 })();

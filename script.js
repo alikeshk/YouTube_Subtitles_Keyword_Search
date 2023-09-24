@@ -60,7 +60,7 @@
         const options = {
             method: 'GET',
             headers: {
-            'X-RapidAPI-Key': 'ef221161c5mshbf460fdf06f66bep1e6fecjsn059962a3d202',
+            'X-RapidAPI-Key': 'apiKey',
             'X-RapidAPI-Host': 'youtube-subtitles-captions-downloader.p.rapidapi.com'
             }
         };

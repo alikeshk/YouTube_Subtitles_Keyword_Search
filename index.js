@@ -16,16 +16,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       container.innerHTML = '<div class="title">This is not a youtube search page</div>';
     }
 
-    // chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    //   if (message.keywordList !== undefined) {
-    //     const keywordResultsDiv = document.getElementById("keywordResults");
-    //     keywordResultsDiv.innerHTML = "<h2>Keyword Occurrences</h2>";
-
-    //     for (let i = 0; i < message.keywordList.length; ++i) {
-    //       keywordResultsDiv.innerHTML += `<p><strong>${message.keywordList[i]}</strong> occurs <b>${message.keywordOcurranceList[i]}</b> times</p>`;
-    //     }
-    //   }
-    // });
 
     chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
       if (message.keywordList !== undefined) {

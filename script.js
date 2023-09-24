@@ -16,6 +16,7 @@
         document.addEventListener("mouseover", function(event) {
           if (event.target.tagName !== "A" || !event.target.href.startsWith("https://www.youtube.com/watch?v=")) {return;}
           console.log(event.target.href);
+          chrome.runtime.sendMessage({ action: "createTab", url: chrome.runtime.getURL("index.html") });
           getYouTubeSubtitles(event.target.href)
             .then(result => {
                 // Use JSON.stringify() to convert the object to a JSON-formatted string

@@ -5,9 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const activeTab = await getCurrentTab();
     const queryParameters = activeTab.url.split("?")[1];
     const urlParameters = new URLSearchParams(queryParameters);
-  
-    // const currentVideo = urlParameters.get("v");
-  
+    
     if (activeTab.url.includes("youtube.com/results")) {
       
     } else {

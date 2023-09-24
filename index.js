@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else {
       const container = document.getElementsByClassName("container")[0];
   
-      container.innerHTML = '<div class="title">This is not a youtube search page.</div>';
+      container.innerHTML = '<div class="title">This is not a youtube search page</div>';
     }
 
     chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         keywordResultsDiv.innerHTML = "<h2>Keyword Occurrences</h2>";
 
         for (let i = 0; i < message.keywordList.length; ++i) {
-          keywordResultsDiv.innerHTML += `<p>${message.keywordList[i]} occurs ${message.keywordOcurranceList[i]} times</p>`;
+          keywordResultsDiv.innerHTML += `<p><strong>${message.keywordList[i]}</strong> occurs <b>${message.keywordOcurranceList[i]}</b> times</p>`;
         }
       }
     });

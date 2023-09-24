@@ -38,18 +38,31 @@
     
     const searchKeywords = async (captions, currentSearch) => {
         const keyword_array = currentSearch.split(" ");
-        const caption_array = captions.split(/[ \\ \n]+/);
+        let caption_array = captions.split(/[ \\ \n]+/);
         const keyword_occurance_array = Array(keyword_array.length).fill(0);
-
+        caption_array = caption_array.map(item => item.toLowerCase());
+        let undesired_words_array = ["the", "a", "how", "to", "in", "on", "of", "it", "is", "are"];
+        let undesiredWordCount = 0;
+        // for (let i = 0; i < caption_array.length; ++i) {
+        //   if (undesired_words_array.includes(caption_array[i])) {
+        //     ++undesiredWordCount;
+        //   }
+        // }
+        // console.log(`Number of undesired words: ${undesiredWordCount}`);
+        console.log(`Caption List Length Before: ${caption_array.length}`);
+        for (let i = 0; i < undesired_words_array.length; ++i) {
+          caption_array = caption_array.filter(item => item !== undesired_words_array[i]);
+        }
+        console.log(`Caption List Length After: ${caption_array.length}`);
         for (let i = 0; i < keyword_array.length; ++i) {
-                let word_count = 0;
-            for (let j = 0; j < caption_array.length; ++j) {
-                if (keyword_array[i].toLowerCase().localeCompare(caption_array[j].toLowerCase()) === 0) {
-                    word_count += 1;
-                }
+          let word_count = 0;
+          for (let j = 0; j < caption_array.length; ++j) {
+            if (keyword_array[i].toLowerCase().localeCompare(caption_array[j]) === 0) {
+              word_count += 1;
             }
-            keyword_occurance_array[i] = word_count;
-            console.log(`${keyword_array[i]} occurs ${word_count} times`);
+          }
+          keyword_occurance_array[i] = word_count;
+          console.log(`${keyword_array[i]} occurs ${word_count} times`);
         }
         chrome.runtime.sendMessage({keywordList: keyword_array, keywordOcurranceList: keyword_occurance_array});
     };

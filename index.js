@@ -15,32 +15,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   
       container.innerHTML = '<div class="title">This is not a youtube search page.</div>';
     }
-  });
 
-//   function makeLists(array1, array2, outputElementId1, outputElementId2) {
+    chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+      if (message.keywordList !== undefined) {
+        const keywordResultsDiv = document.getElementById("keywordResults");
+        keywordResultsDiv.innerHTML = "<h2>Keyword Occurrences</h2>";
 
-//     var outputElement1 = document.getElementById(outputElementId1);
-//     var outputElement2 = document.getElementById(outputElementId2);
-//     //the output elements ID for the html
-
-//     var list1 = document.createElement('ul');
-//     var list2 = document.createElement('ul');
-//     //This is to create the main lists
-
-//     for (var i = 0; i < array1.length; i++) {
-//       var li = document.createElement('li');
-//       li.textContent = array1[i];
-//       list1.appendChild(li);
-//     }
-//     //This is to "listify" the first array into an unordered list
-
-//     for (var i = 0; i < array2.length; i++) {
-//       var li = document.createElement('li');
-//       li.textContent = array2[i];
-//       list2.appendChild(li);
-//     }
-//     //This is to "listify" the second array into an unordered list
-
-//     outputElement1.appendChild(ul1);
-//     outputElement2.appendChild(ul2);    
-//   }
+        for (let i = 0; i < message.keywordList.length; ++i) {
+          keywordResultsDiv.innerHTML += `<p>${message.keywordList[i]} occurs ${message.keywordOcurranceList[i]} times</p>`;
+        }
+      }
+    });
+});

@@ -16,7 +16,6 @@
         document.addEventListener("mouseover", function(event) {
           if (event.target.tagName !== "A" || !event.target.href.startsWith("https://www.youtube.com/watch?v=")) {return;}
           console.log(event.target.href);
-          chrome.runtime.sendMessage({ action: "createTab", url: chrome.runtime.getURL("index.html") });
           getYouTubeSubtitles(event.target.href)
             .then(result => {
                 // Use JSON.stringify() to convert the object to a JSON-formatted string
@@ -50,6 +49,7 @@
             keyword_occurance_array[i] = word_count;
             console.log(`${keyword_array[i]} occurs ${word_count} times`);
         }
+        chrome.runtime.sendMessage({keywordList: keyword_array, keywordOcurranceList: keyword_occurance_array});
     };
     
     async function getYouTubeSubtitles(url) {
@@ -58,7 +58,7 @@
         const options = {
             method: 'GET',
             headers: {
-            'X-RapidAPI-Key': "apiKey",
+            'X-RapidAPI-Key': "df0b79cf34msh2d0491b41ffa7b5p1d2ce7jsnae46c0d35325",
             'X-RapidAPI-Host': 'youtube-subtitles-captions-downloader.p.rapidapi.com'
             }
         };
@@ -73,11 +73,4 @@
         
         return result;
     }
-
-    document.addEventListener("DOMContentLoaded", async () => {
-        if (currentSearch === "") {
-            const container = document.getElementsByClassName("container")[0];
-            container.innerHTML = '<div class="title">Test Script.js.</div>';
-        }
-    });
 })();

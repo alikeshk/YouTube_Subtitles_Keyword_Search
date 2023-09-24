@@ -1,6 +1,6 @@
 (() => {
     let currentSearch = "";
-
+    var dict = new Object();
     chrome.runtime.onMessage.addListener((obj, sender, response) => {
         const { type, value, searchId } = obj;
     
@@ -16,17 +16,24 @@
         document.addEventListener("mouseover", function(event) {
           if (event.target.tagName !== "A" || !event.target.href.startsWith("https://www.youtube.com/watch?v=")) {return;}
           console.log(event.target.href);
-          getYouTubeSubtitles(event.target.href)
+          if (dict[event.target.href.split("?")[1]] !== undefined) {
+            console.log("grab from dict")
+            searchKeywords(dict[event.target.href.split("?")[1]], currentSearch)
+          } else {
+            console.log("add to dict")
+            getYouTubeSubtitles(event.target.href)
             .then(result => {
                 // Use JSON.stringify() to convert the object to a JSON-formatted string
                 const captions = JSON.stringify(result);
                 //console.log(typeof captions);
                 searchKeywords(captions, currentSearch);
                 //console.log("Result as string:", captions);
+                dict[event.target.href.split("?")[1]] = captions;
             })
             .catch(error => {
                 console.error("Error:", error);
             });
+          }
         });
       }
     };
@@ -58,7 +65,7 @@
         const options = {
             method: 'GET',
             headers: {
-            'X-RapidAPI-Key': 'apiKey',
+            'X-RapidAPI-Key': 'ef221161c5mshbf460fdf06f66bep1e6fecjsn059962a3d202',
             'X-RapidAPI-Host': 'youtube-subtitles-captions-downloader.p.rapidapi.com'
             }
         };

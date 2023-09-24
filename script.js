@@ -25,9 +25,7 @@
             .then(result => {
                 // Use JSON.stringify() to convert the object to a JSON-formatted string
                 const captions = JSON.stringify(result);
-                //console.log(typeof captions);
                 searchKeywords(captions, currentSearch);
-                //console.log("Result as string:", captions);
                 dict[event.target.href.split("?")[1]] = captions;
             })
             .catch(error => {
@@ -39,11 +37,8 @@
     };
     
     const searchKeywords = async (captions, currentSearch) => {
-        //console.log(typeof captions);
         const keyword_array = currentSearch.split(" ");
         const caption_array = captions.split(/[ \\ \n]+/);
-        // console.log(keyword_array);
-        // console.log(caption_array);
         const keyword_occurance_array = Array(keyword_array.length).fill(0);
 
         for (let i = 0; i < keyword_array.length; ++i) {
@@ -73,7 +68,6 @@
         try {
             const response = await fetch(url, options);
             result = await response.text();
-            //console.log(result);
         } catch (error) {
             console.error(error);
         }

@@ -42,7 +42,7 @@
         const keyword_occurance_array = Array(keyword_array.length).fill(0);
         caption_array = caption_array.map(item => item.toLowerCase());
         let undesired_words_array = ["the", "a", "how", "to", "in", "on", "of", "it", "is", "are"];
-        let undesiredWordCount = 0;
+        // let undesiredWordCount = 0;
         // for (let i = 0; i < caption_array.length; ++i) {
         //   if (undesired_words_array.includes(caption_array[i])) {
         //     ++undesiredWordCount;

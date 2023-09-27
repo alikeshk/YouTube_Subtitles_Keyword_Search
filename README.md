@@ -15,6 +15,9 @@
 
 <br />This extension was initially created at the [Hack Midwest 2023](https://www.hackmidwest.com/) competition in Kansas City.<br />
 
+<br>API Used:
+* https://rapidapi.com/420vijay47/api/youtube-subtitles-captions-downloader</br>
+
 <br />We would like to include the links to two YouTube videos which helped us along the way in building this extension:
 * https://www.youtube.com/watch?v=0n809nd4Zu4&t=826s
 * https://www.youtube.com/watch?v=kP-UmHrxCYk<br />

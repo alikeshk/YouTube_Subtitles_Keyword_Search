@@ -11,6 +11,8 @@
 ## Extension Purpose:
 
 <br />This is an extension that can be uploaded to Chrome which should save the words from their YouTube search. After that, when a user hovers over a YouTube video, the extension will display how many times the words in their search show up in the video subtitles. This will allow the user to determine whether they should spend time watching the video or keep browsing. This is the initial idea, and we hope to build off of that.<br />
+
+<br />Note: User will need to add their own api key in the script.js file to fetch the subtitles for each video.<br />
 ## References
 
 <br />This extension was initially created at the [Hack Midwest 2023](https://www.hackmidwest.com/) competition in Kansas City.<br />

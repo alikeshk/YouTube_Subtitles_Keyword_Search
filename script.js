@@ -10,7 +10,8 @@
           newSearchLoaded();
         }
     });
-    
+
+    // Calls function to get video subtitles when hovering over a video after search.
     const newSearchLoaded = async () => {
       if (typeof document !== undefined) {
         document.addEventListener("mouseover", function(event) {
@@ -36,6 +37,8 @@
       }
     };
     
+    // Count the number of times that each keyword from the search shows up in the subtitles.
+    // Currently have commented out logic to filter out redundant words from search.
     const searchKeywords = async (captions, currentSearch) => {
         const keyword_array = currentSearch.split(" ");
         let caption_array = captions.split(/[ \\ \n]+/);
@@ -67,6 +70,7 @@
         chrome.runtime.sendMessage({keywordList: keyword_array, keywordOcurranceList: keyword_occurance_array});
     };
     
+    // Fetch subtitles from API for a video given its url.
     async function getYouTubeSubtitles(url) {
         let result;
         url = `https://youtube-subtitles-captions-downloader.p.rapidapi.com/ytmp3/ytmp3/subtitles/?url=${url}`;

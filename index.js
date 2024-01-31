@@ -1,4 +1,4 @@
-// Added 'getCurrentTab'
+// Added 'getCurrentTab' from utilities.js
 import { getCurrentTab } from "./utilities.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   
       container.innerHTML = '<div class="title">This is not a youtube search page</div>';
     }
-
 
     chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
       if (message.keywordList !== undefined) {
